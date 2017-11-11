@@ -1,3 +1,5 @@
+#define WIN32_LEAN_AND_MEAN
+#define VC_EXTRALEAN
 #define _CRT_SECURE_NO_WARNINGS // Go away.
 
 #include <stdio.h>
@@ -38,7 +40,7 @@ int main(int argc, char** argv)
 
 	if (!fileName)
 	{
-		printf("Couldn't allocate memory of size %zu bytes for file name buffer.", totalFileNameSize);
+		printf("Couldn't allocate memory of size %zu bytes for file name buffer.\n", totalFileNameSize);
 		return 0;
 	}
 
@@ -59,7 +61,7 @@ int main(int argc, char** argv)
 	file = fopen(fileName, "r");
 	if (!file)
 	{
-		printf("Couldn't open file for reading: %s!", fileName);
+		printf("Couldn't open file for reading: %s!\n", fileName);
 		return 0;
 	}
 
@@ -72,7 +74,7 @@ int main(int argc, char** argv)
 
 	if (totalDataSize == 0)
 	{
-		printf("File has size of 0.");
+		printf("File has size of 0.\n");
 		return 0;
 	}
 
@@ -80,7 +82,7 @@ int main(int argc, char** argv)
 	fileData = (char*)malloc(totalDataSize);
 	if (!fileData)
 	{
-		printf("Couldn't allocate memory of size %zu bytes for file data buffer.", totalDataSize);
+		printf("Couldn't allocate memory of size %zu bytes for file data buffer.\n", totalDataSize);
 		return 0;
 	}
 
@@ -90,7 +92,7 @@ int main(int argc, char** argv)
 	file = fopen(fileName, "w");
 	if (!file)
 	{
-		printf("Couldn't open file for writing: %s!", fileName);
+		printf("Couldn't open file for writing: %s!\n", fileName);
 		return 0;
 	}
 
