@@ -118,10 +118,10 @@ int main(int argc, char** argv)
 		fileName, fileName, fileName, totalDataSize, fileName);
 
 	if (totalDataSize >= 1)
-		fprintf(file, "0x%02X", (unsigned int)fileData[0]);
+		fprintf(file, "0x%02X", (unsigned char)fileData[0]);
 
 	for (i = 1; i < totalDataSize; i++)
-		fprintf(file, ",0x%02X", (unsigned int)fileData[i]);
+		fprintf(file, ",0x%02X", (unsigned char)fileData[i]);
 
 	fprintf(file, "\n};\n\n");
 	fprintf(file, "#endif\n");
