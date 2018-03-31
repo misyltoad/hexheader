@@ -58,7 +58,7 @@ int main(int argc, char** argv)
 
 	fileName[totalFileNameSize - 3] = '\0';
 
-	file = fopen(fileName, "r");
+	file = fopen(fileName, "rb");
 	if (!file)
 	{
 		printf("Couldn't open file for reading: %s!\n", fileName);
