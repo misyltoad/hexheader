@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc main.c -o hexdump
+gcc main.c -o hexheader
 
