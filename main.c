@@ -21,7 +21,7 @@ int main(int argc, char** argv)
 	if (argc < 2 || argv == NULL || argv[1] == NULL)
 	{
 		printf("You need to give me a file to create a C header hex dump of!\n");
-		return 0;
+		return 1;
 	}
 
 	for (i = 1; i < argc; i++)
@@ -41,7 +41,7 @@ int main(int argc, char** argv)
 	if (!fileName)
 	{
 		printf("Couldn't allocate memory of size %zu bytes for file name buffer.\n", totalFileNameSize);
-		return 0;
+		return 1;
 	}
 
 	fileName[0] = '\0';
@@ -62,7 +62,7 @@ int main(int argc, char** argv)
 	if (!file)
 	{
 		printf("Couldn't open file for reading: %s!\n", fileName);
-		return 0;
+		return 1;
 	}
 
 	fileName[totalFileNameSize - 3] = '.';
@@ -75,7 +75,7 @@ int main(int argc, char** argv)
 	if (totalDataSize == 0)
 	{
 		printf("File has size of 0.\n");
-		return 0;
+		return 1;
 	}
 
 	fseek(file, 0, SEEK_SET);
@@ -83,7 +83,7 @@ int main(int argc, char** argv)
 	if (!fileData)
 	{
 		printf("Couldn't allocate memory of size %zu bytes for file data buffer.\n", totalDataSize);
-		return 0;
+		return 1;
 	}
 
 	fread((void*)fileData, totalDataSize, 1, file);
@@ -93,7 +93,7 @@ int main(int argc, char** argv)
 	if (!file)
 	{
 		printf("Couldn't open file for writing: %s!\n", fileName);
-		return 0;
+		return 1;
 	}
 
 	fileName[totalFileNameSize - 3] = '\0';
@@ -106,7 +106,7 @@ int main(int argc, char** argv)
 			fileName[i] = '_';
 	}
 
-	fprintf(file, 
+	fprintf(file,
 		"#ifndef %s_H\n"
 		"#define %s_H\n"
 		"\n"
@@ -130,5 +130,5 @@ int main(int argc, char** argv)
 	free(fileData);
 	free(fileName);
 
-	return 1;
+	return 0;
 }
